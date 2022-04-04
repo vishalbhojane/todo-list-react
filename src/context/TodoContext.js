@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 
 const TodoContext = createContext()
 
@@ -96,16 +96,24 @@ export const TodoProvider = ({ children }) => {
         setItems([...tmp]);
     }
 
-    const checkHasCompltedTask = () => {
-        let completedTasksArray = items.find(el => el.complete === true)
-        completedTasksArray ? setHasCompletedTasks(true) : setHasCompletedTasks(false)
-    }
+    // const checkHasCompltedTask = () => {
+    //     let completedTasksArray = items.find(el => el.complete === true)
+    //     completedTasksArray ? setHasCompletedTasks(true) : setHasCompletedTasks(false)
+    // }
+
+    const checkHasCompltedTask = useCallback(
+        () => {
+            let completedTasksArray = items.find(el => el.complete === true)
+            completedTasksArray ? setHasCompletedTasks(true) : setHasCompletedTasks(false)
+        },
+        [items],
+      );
 
     useEffect(() => {
         localStorage.setItem('myTodoList', JSON.stringify(items))
         checkHasCompltedTask()
 
-    }, [items,checkHasCompltedTask])
+    }, [items, checkHasCompltedTask])
 
     return (
         <TodoContext.Provider
