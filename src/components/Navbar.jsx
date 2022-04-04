@@ -1,6 +1,4 @@
-import { useContext } from 'react';
-import { Link, Route, Routes } from 'react-router-dom'
-import TodoContext from '../context/TodoContext';
+import { Link} from 'react-router-dom'
 
 const Navbar = () => {
     return (
