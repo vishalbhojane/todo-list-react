@@ -105,7 +105,7 @@ export const TodoProvider = ({ children }) => {
         localStorage.setItem('myTodoList', JSON.stringify(items))
         checkHasCompltedTask()
 
-    }, [items])
+    }, [items,checkHasCompltedTask])
 
     return (
         <TodoContext.Provider
