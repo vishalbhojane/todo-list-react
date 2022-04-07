@@ -16,7 +16,7 @@ const getLocalData = () => {
 
 const getThemeSettings = () => {
     let temp = JSON.parse(localStorage.getItem("mtdl_theme"))
-    if(temp.length > 0) {
+    if(temp) {
         return temp
     } else return "dark"
 }
