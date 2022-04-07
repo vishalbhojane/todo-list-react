@@ -8,7 +8,7 @@ const About = () => {
                 
             </div>
             <h1 className='desc'>Created by Vishal Bhojane &copy; {date}</h1>
-                <Link to='/'><p className="cta">Back To Home</p></Link>
+                <Link to='/'><i className="cta fa-solid fa-house-chimney"></i></Link>
         </div>
     );
 }
