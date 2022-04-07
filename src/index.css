@@ -4,6 +4,11 @@ ul li{list-style:none}
 .pos-abs-v{position:absolute;right:1rem;top:50%;transform:translateY(-50%)}
 body{font-family:"Source Sans Pro",sans-serif;}
 html{font-size:62.5%;}
+
+.flex-center-c{display: flex;align-items: center;justify-content: center;flex-direction: column;gap: 2rem;}
+.text-center{text-align: center;}
+.fht{min-height: calc(100vh - 85px);}
+
 .container{padding:0 1rem;min-height:100vh;}
 .app-container{width:768px;max-width:100%;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:2rem 0;padding:20px 0}
 .app-container .cta-container{display:flex;align-items:center;justify-content:space-between;gap:0 1rem}
