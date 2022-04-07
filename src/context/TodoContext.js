@@ -5,13 +5,20 @@ const TodoContext = createContext()
 const refer = (selector) => document.querySelector(selector)
 
 const getLocalData = () => {
-    let list = JSON.parse(localStorage.getItem("myTodoList"))
+    let list = JSON.parse(localStorage.getItem("mtdl_data"))
     if(list) {
         return list
     } else {
         list = []
         return list
     }
+}
+
+const getThemeSettings = () => {
+    let temp = JSON.parse(localStorage.getItem("mtdl_theme"))
+    if(temp.length > 0) {
+        return temp
+    } else return "dark"
 }
 
 export const TodoProvider = ({ children }) => {
@@ -22,6 +29,7 @@ export const TodoProvider = ({ children }) => {
     const [hasCompletedTasks, setHasCompletedTasks] = useState(false)
     const [completedHidden, setCompletedHidden] = useState(false)
     const [sortDir, setSortDir] = useState("up")
+    const [theme, setTheme] = useState(getThemeSettings())
 
     const handleAdd = () => {
         let inp = inputData.trim()
@@ -110,10 +118,14 @@ export const TodoProvider = ({ children }) => {
       );
 
     useEffect(() => {
-        localStorage.setItem('myTodoList', JSON.stringify(items))
+        localStorage.setItem('mtdl_data', JSON.stringify(items))
         checkHasCompltedTask()
 
     }, [items, checkHasCompltedTask])
+
+    useEffect(() => {
+        localStorage.setItem('mtdl_theme', JSON.stringify(theme))
+    },[theme])
 
     return (
         <TodoContext.Provider
@@ -124,6 +136,7 @@ export const TodoProvider = ({ children }) => {
                 isEditing,
                 hasCompletedTasks,
                 editingItem,
+                theme,
                 setHasCompletedTasks,
                 setItems,
                 setInputData,
@@ -137,6 +150,7 @@ export const TodoProvider = ({ children }) => {
                 checkHasCompltedTask,
                 setCompletedHidden,
                 refer,
+                setTheme,
             }}
         >{children}</TodoContext.Provider>
     )

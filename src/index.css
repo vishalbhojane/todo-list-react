@@ -1,61 +1,93 @@
 @import url(https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap);
-*{margin:0;padding:0;box-sizing:border-box;text-decoration:none}
+*{margin:0;padding:0;box-sizing:border-box;text-decoration:none;}
 ul li{list-style:none}
 .pos-abs-v{position:absolute;right:1rem;top:50%;transform:translateY(-50%)}
-body{font-family:"Source Sans Pro",sans-serif}
-html{font-size:62.5%}
-.container{background:#000;padding:0 1rem;min-height:100vh}
+body{font-family:"Source Sans Pro",sans-serif;}
+html{font-size:62.5%;}
+.container{padding:0 1rem;min-height:100vh;}
 .app-container{width:768px;max-width:100%;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:2rem 0;padding:20px 0}
 .app-container .cta-container{display:flex;align-items:center;justify-content:space-between;gap:0 1rem}
 .nav{width:100%;display:flex;justify-content:space-between;align-items:center;gap:0 1rem}
-.nav .fa-house,.nav .fa-square-info{color:#fff;font-size:1.5rem}
-.fa-square-info:hover{color:#64d62f}
-.title{color:#fff;font-size:2rem;text-align:center}
-.desc{color:#fff;font-size:1.5rem}
+.nav .fa-house,.nav .fa-square-info{font-size:1.5rem}
+.title{font-size:2rem;text-align:center}
+.desc{font-size:1.5rem}
 .form{position:relative;width:100%}
-.form .cta{color:#000}
-.fa-plus:hover{color:#64d62f}
-input{padding:1rem 3rem 1rem 1rem;font-size:2rem;line-height:1.5;color:#222;background-color:#fff;border-radius:.4rem;width:100%}
+input{padding:1rem 3rem 1rem 1rem;font-size:2rem;line-height:1.5;border-radius:.4rem;width:100%}
 input,input:active,input:active:focus,input:focus{border:none;outline:0}
-.cta{font-size:1.5rem;cursor:pointer;-webkit-transition:color .15s linear;transition:color .15s linear;color:#fff}
+.cta{font-size:1.5rem;cursor:pointer;-webkit-transition:color .15s linear;transition:color .15s linear;}
 .todo-list{display:flex;flex-direction:column;gap:1rem 0;width:100%}
-.todo-item{position:relative;display:flex;flex-direction:column;align-items:flex-end;color:#fff;padding:1rem;border-radius:.5rem;background:#333;gap:1rem 0}
-.todo-item:hover, .todo-item.editing{background:#f9f9f9}
-.todo-item.completed:hover{background: #333;}
-.todo-item p{font-size:2rem;width:100%;font-weight:600;color:#f9f9f9;word-break:break-all}
-.todo-item:hover p, .todo-item.editing p{color:#333}
+.todo-item{position:relative;display:flex;flex-direction:column;align-items:flex-end;padding:1rem;border-radius:.5rem;;gap:1rem 0}
+.todo-item p{font-size:2rem;width:100%;font-weight:600;word-break:break-all}
 .todo-item.completed{opacity: 0.5;}
-.todo-item.completed:hover p{color:#f9f9f9}
 .todo-item.completed p{text-decoration:line-through}
 .todo-item .cta-container{display:flex;gap:0 .5rem}
-.todo-item:hover .fa-trash-can, .todo-item.editing .fa-trash-can{color:#d62f3d}
-.todo-item:hover .fa-check{color:#64d62f}
-.todo-item:hover .fa-pen-to-square{color:#333}
 .todo-item.hidden{display:none}
-.btn{cursor:pointer;font-size:1.5rem;font-weight:500;line-height:1.5;text-decoration:none;text-transform:uppercase;border:none;padding:.5rem 1rem;background:#fff;border-radius:.5rem}
-.btn:hover{color:#fff}
-
-.btn.btn-remove:hover{background:#d62f3d}
-.btn.btn-hide:hover{background:#64d62f}
-.btn.btn-sort:hover{background:#fca311}
-
+.btn{cursor:pointer;font-size:1.4rem;font-weight:500;line-height:1.5;text-decoration:none;text-transform:uppercase;border:none;padding:.5rem 1rem;background:#fff;border-radius:.5rem}
 
 /* Colors */
-.fa-square-info:hover, .fa-plus:hover, .todo-item:hover .fa-check{color:#64d62f}
-.todo-item:hover .fa-trash-can, .todo-item.editing .fa-trash-can{color:#d62f3d}
-.btn.btn-sort:hover{background:#fca311}
-.btn.btn-remove:hover{background:#d62f3d}
-.btn.btn-hide:hover{background:#64d62f}
+#root .fa-square-info:hover {color:#64d62f}
+#root .fa-plus:hover {color:#64d62f}
+#root .todo-item:hover .fa-check{color:#64d62f}
+#root .todo-item:hover .fa-trash-can {color:#d62f3d}
+#root .todo-item.editing .fa-trash-can{color:#d62f3d}
 
+#root .btn.btn-sort:hover{background:#fca311}
+#root .btn.btn-remove:hover{background:#d62f3d}
+#root .btn.btn-hide:hover{background:#64d62f}
 
-/* .container{background:#000;}
-.todo-item, .todo-item.completed:hover{background: #333;}
-.form .cta, input, .todo-item:hover p, .todo-item.editing p, .todo-item:hover .fa-pen-to-square{color:#333;}
-.btn, input, .todo-item:hover, .todo-item.editing{background:#fff}
-.btn:hover, .nav .fa-house,.nav .fa-square-info, .title, desc, .cta, .todo-item, .todo-item p, .todo-item.completed:hover p{color:#fff;} */
+/* Dark Mode */
+#root [data-theme="dark"].container{background:#000;}
+#root [data-theme="dark"] .todo-item{background: #333;}
+#root [data-theme="dark"] .todo-item.completed:hover{background: #333;}
+#root [data-theme="dark"] .form .cta {color:#333;}
+#root [data-theme="dark"] input {color:#333;}
+#root [data-theme="dark"] .todo-item:hover p {color:#333;}
+#root [data-theme="dark"] .todo-item.editing p {color:#333;}
+#root [data-theme="dark"] .todo-item:hover .fa-pen-to-square{color:#333;}
+#root [data-theme="dark"] .btn{background:#fff}
+#root [data-theme="dark"] input{background:#fff}                
+#root [data-theme="dark"] .todo-item:hover{background:#fff}
+#root [data-theme="dark"] .todo-item.editing{background:#fff}
+#root [data-theme="dark"] .btn:hover {color:#fff;}
+#root [data-theme="dark"] .nav .fa-house {color:#fff;}
+#root [data-theme="dark"] .nav .fa-square-info {color:#fff;}
+#root [data-theme="dark"] .title {color:#fff;}
+#root [data-theme="dark"] .desc {color:#fff;}
+#root [data-theme="dark"] .cta {color:#fff;}
+#root [data-theme="dark"] .todo-item {color:#fff;}
+#root [data-theme="dark"] .todo-item p {color:#fff;}
+#root [data-theme="dark"] .todo-item.completed:hover p{color:#fff;}
+#root [data-theme="dark"] .btn.theme.theme{color: #fff; background: #000;outline: 1px solid #fff;border-radius: .4rem;}
+#root [data-theme="dark"] .btn.theme:hover{color: #333; background: #fff;outline: none;border-radius: .4rem;}
 
-/* .container{background:#fff;}
-.todo-item, .todo-item.completed:hover{background: #333;}
-.form .cta, input, .todo-item:hover p, .todo-item.editing p, .todo-item:hover .fa-pen-to-square{color:#333;}
-.btn, input, .todo-item:hover, .todo-item.editing{background:#fff}
-.btn:hover, .nav .fa-house,.nav .fa-square-info, .title, desc, .cta, .todo-item, .todo-item p, .todo-item.completed:hover p{color:#fff;} */
+/* Light Mode */
+#root [data-theme="light"].container{background:#fff;}
+#root [data-theme="light"] .todo-item{background: transparent; outline: 1px solid #999; border-radius: .4rem;}
+#root [data-theme="light"] .completed:hover{background: transparent; outline: 1px solid #999; border-radius: .4rem;}
+#root [data-theme="light"] .form {outline: 1px solid #999;border-radius: .4rem;}
+#root [data-theme="light"] .form .cta {color:#333;}
+#root [data-theme="light"] input {color:#333;}
+#root [data-theme="light"] .todo-item:hover p {color:#333;}
+#root [data-theme="light"] .todo-item.editing p {color:#333;}
+#root [data-theme="light"] .todo-item:hover .fa-pen-to-square{color:#333;}
+#root [data-theme="light"] .btn{background:transparent; outline: 1px solid #999;}
+#root [data-theme="light"] input{background:#fff;}
+#root [data-theme="light"] .todo-item:hover{background:#fff}
+#root [data-theme="light"] .todo-item.editing{background:#fff}
+#root [data-theme="light"] .btn:hover {color:#fff; outline: none;}
+#root [data-theme="light"] .nav .fa-house {color:#333;}
+#root [data-theme="light"] .nav .fa-square-info {color:#333;}
+#root [data-theme="light"] .title {color:#333;}
+#root [data-theme="light"] .desc {color:#333;}
+#root [data-theme="light"] .cta {color:#333;}
+#root [data-theme="light"] .todo-item {color:#333;}
+#root [data-theme="light"] .todo-item p {color:#333;}
+#root [data-theme="light"] .todo-item.completed:hover p{color:#333;}
+#root [data-theme="light"] .btn.theme{color: #333; background: #fff;outline: 1px solid #999;border-radius: .4rem;}
+#root [data-theme="light"] .btn.theme:hover{color: #fff; background: #333;outline: none;border-radius: .4rem;}
+#root [data-theme="light"] .btn.btn-sort{color:#fca311}
+#root [data-theme="light"] .btn.btn-remove{color:#d62f3d}
+#root [data-theme="light"] .btn.btn-hide{color:#64d62f}
+#root [data-theme="light"] .btn.btn-sort:hover{color:#fff}
+#root [data-theme="light"] .btn.btn-remove:hover{color:#fff}
+#root [data-theme="light"] .btn.btn-hide:hover{color:#fff}

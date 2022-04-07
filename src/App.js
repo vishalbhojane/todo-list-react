@@ -1,18 +1,18 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useContext } from "react";
 import Actions from "./components/Actions";
 import Form from "./components/Form";
-import { TodoProvider } from "./context/TodoContext";
 import TodoList from "./components/TodoList";
 import Navbar from "./components/Navbar";
 import About from './routes/About';
+import TodoContext from "./context/TodoContext";
 
 function App() {
-
+  const {theme} = useContext(TodoContext)
   return (
     <>
       <BrowserRouter>
-        <TodoProvider>
-          <div className="container">
+          <div className="container" data-theme={theme}>
             <div className="app-container">
               <Navbar />
 
@@ -41,7 +41,6 @@ function App() {
               </Routes>
             </div>
           </div>
-        </TodoProvider>
       </BrowserRouter>
     </>
   );

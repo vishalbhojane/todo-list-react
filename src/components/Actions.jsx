@@ -10,8 +10,8 @@ const Todo = () => {
                 {
                     items.length > 0 ? <>
                         {items.length > 1 && <button className="btn btn-sort" onClick={() => { sortItems(items) }}>Sort</button>}
-                        {hasCompletedTasks && <button className="btn btn-hide" onClick={() => { setCompletedHidden(!completedHidden) }}>{completedHidden ? "Show" : "hide"} Completed</button>}
-                        <button className="btn btn-remove" onClick={handleRemoveAll}>Clear All</button>
+                        {hasCompletedTasks && <button className="btn btn-hide" onClick={() => { setCompletedHidden(!completedHidden) }}>{completedHidden ? "" : "hide"} Completed</button>}
+                        <button className="btn btn-remove" onClick={handleRemoveAll}>Reset</button>
                     </> : ""
                 }
             </div>
