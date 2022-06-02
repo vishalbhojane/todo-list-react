@@ -21,15 +21,26 @@ const getThemeSettings = () => {
     } else return "dark"
 }
 
+const getHiddenState = () => {
+    let temp = JSON.parse(localStorage.getItem("mtdl_hidden"))
+    if(temp) {
+        return temp
+    } else return false
+}
+
 export const TodoProvider = ({ children }) => {
     const [inputData, setInputData] = useState('')
     const [items, setItems] = useState(getLocalData())
     const [isEditing, setIsEditing] = useState(false)
     const [editingItem, setEditingItem] = useState('')
     const [hasCompletedTasks, setHasCompletedTasks] = useState(false)
-    const [completedHidden, setCompletedHidden] = useState(false)
+    const [completedHidden, setCompletedHidden] = useState(getHiddenState())
+    const [removeConfirm, setRemoveConfirm] = useState(false)
     const [sortDir, setSortDir] = useState("up")
     const [theme, setTheme] = useState(getThemeSettings())
+
+    const [iscustomUser, setCustomUser] = useState(false)
+    const [user, setUser] = useState('My')
 
     const handleAdd = () => {
         let inp = inputData.trim()
@@ -69,10 +80,6 @@ export const TodoProvider = ({ children }) => {
         setIsEditing(false)
         setInputData("")
         setItems(updated)
-    }
-
-    const handleRemoveAll = () => {
-        if (window.confirm("Confirm to delete all your todos")) setItems([])
     }
 
     const handleComplete = (id) => {
@@ -120,12 +127,15 @@ export const TodoProvider = ({ children }) => {
     useEffect(() => {
         localStorage.setItem('mtdl_data', JSON.stringify(items))
         checkHasCompltedTask()
-
     }, [items, checkHasCompltedTask])
 
     useEffect(() => {
         localStorage.setItem('mtdl_theme', JSON.stringify(theme))
     },[theme])
+
+    useEffect(() => {
+        localStorage.setItem('mtdl_hidden', JSON.stringify(completedHidden))
+    },[completedHidden])
 
     return (
         <TodoContext.Provider
@@ -137,6 +147,10 @@ export const TodoProvider = ({ children }) => {
                 hasCompletedTasks,
                 editingItem,
                 theme,
+                user,
+                iscustomUser,
+                removeConfirm,
+                setRemoveConfirm,
                 setHasCompletedTasks,
                 setItems,
                 setInputData,
@@ -144,13 +158,14 @@ export const TodoProvider = ({ children }) => {
                 handleCancle,
                 handleDelete,
                 handleComplete,
-                handleRemoveAll,
                 handleEditStatus,
                 sortItems,
                 checkHasCompltedTask,
                 setCompletedHidden,
                 refer,
                 setTheme,
+                setUser,
+                setCustomUser,
             }}
         >{children}</TodoContext.Provider>
     )
