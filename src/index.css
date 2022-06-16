@@ -3,6 +3,7 @@ ul li{list-style:none}
 .pos-abs-v{position:absolute;right:1rem;top:50%;transform:translateY(-50%)}
 body{font-family:"Source Sans Pro",sans-serif;}
 html{font-size:62.5%;}
+::-webkit-scrollbar { display: none; }
 
 .d-flex{display: flex;}
 .flex-center-c{display: flex;align-items: center;justify-content: center;flex-direction: column;gap: 2rem;}
